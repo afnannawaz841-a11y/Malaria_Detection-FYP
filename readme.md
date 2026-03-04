@@ -59,8 +59,7 @@ Open in browser:
 
 ## 📊 Performance
 
--   MobileNet: 93.1% accuracy\
--   Custom CNN: 92.8% accuracy\
+-   MobileNet/Custom CNN: 92.8% accuracy
 -   VGG16: 85.2% accuracy
 
 True Positive Rate: 93.2%\

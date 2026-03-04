@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact - MalaDetect AI{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-6 py-12">
+    <!-- Header -->
+    <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-white mb-4">Contact & Team</h1>
+        <p class="text-xl text-gray-300">Get in touch with the MalaDetect AI development team</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Contact Form -->
+        <div class="lg:col-span-2">
+            <div class="glass rounded-2xl p-8">
+                <div class="flex items-center mb-8">
+                    <div class="text-4xl mr-4">📬</div>
+                    <h2 class="text-3xl font-bold text-white">Send us a Message</h2>
+                </div>
+                
+                <p class="text-gray-300 mb-8">Have questions about our malaria detection system? We'd love to hear from you!</p>
+                
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-200 mb-2">Full Name</label>
+                            <input type="text" id="name" name="name" required
+                                   class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                                   placeholder="Enter your full name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-200 mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" required
+                                   class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                                   placeholder="your.email@example.com">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-200 mb-2">Subject</label>
+                        <select id="subject" name="subject" required
+                                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all">
+                            <option value="" class="bg-gray-800">Select a topic</option>
+                            <option value="general" class="bg-gray-800">General Inquiry</option>
+                            <option value="technical" class="bg-gray-800">Technical Support</option>
+                            <option value="collaboration" class="bg-gray-800">Research Collaboration</option>
+                            <option value="feedback" class="bg-gray-800">Feedback</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-200 mb-2">Message</label>
+                        <textarea id="message" name="message" rows="6" required
+                                  class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
+                                  placeholder="Tell us about your question or feedback..."></textarea>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full bg-gradient-to-r from-primary to-cyan-600 hover:from-cyan-600 hover:to-primary text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
+                        <span class="flex items-center justify-center">
+                            <span class="mr-2">🚀</span>
+                            Send Message
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="space-y-8">
+            <!-- Project Info -->
+            <div class="glass rounded-2xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="text-3xl mr-3">🧬</div>
+                    <h3 class="text-xl font-bold text-white">Project Info</h3>
+                </div>
+                <div class="space-y-3">
+                    <div>
+                        <div class="text-primary font-semibold">Project Title</div>
+                        <div class="text-gray-300 text-sm">Malaria Detection using Deep Learning</div>
+                    </div>
+                    <div>
+                        <div class="text-primary font-semibold">Technology Stack</div>
+                        <div class="text-gray-300 text-sm">Flask, TensorFlow, Python, AI/ML</div>
+                    </div>
+                    <div>
+                        <div class="text-primary font-semibold">Models Used</div>
+                        <div class="text-gray-300 text-sm">MobileNet, VGG16</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="glass rounded-2xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="text-3xl mr-3">📞</div>
+                    <h3 class="text-xl font-bold text-white">Get in Touch</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="text-primary text-xl">📧</div>
+                        <div>
+                            <div class="text-gray-300 text-sm">Email</div>
+                            <div class="text-white font-semibold">team@maladetect.ai</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-primary text-xl">📍</div>
+                        <div>
+                            <div class="text-gray-300 text-sm">Location</div>
+                            <div class="text-white font-semibold">AI Research Lab</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-primary text-xl">🕰️</div>
+                        <div>
+                            <div class="text-gray-300 text-sm">Response Time</div>
+                            <div class="text-white font-semibold">24-48 hours</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="glass rounded-2xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="text-3xl mr-3">🔗</div>
+                    <h3 class="text-xl font-bold text-white">Quick Links</h3>
+                </div>
+                <div class="space-y-3">
+                    <a href="{{ url_for('about') }}" class="flex items-center space-x-3 text-gray-300 hover:text-primary transition-colors">
+                        <div class="text-lg">📚</div>
+                        <span>About the Project</span>
+                    </a>
+                    <a href="{{ url_for('methodology') }}" class="flex items-center space-x-3 text-gray-300 hover:text-primary transition-colors">
+                        <div class="text-lg">⚙️</div>
+                        <span>Methodology</span>
+                    </a>
+                    <a href="{{ url_for('results') }}" class="flex items-center space-x-3 text-gray-300 hover:text-primary transition-colors">
+                        <div class="text-lg">📈</div>
+                        <span>Results & Performance</span>
+                    </a>
+                    {% if session.get('user_id') %}
+                        <a href="{{ url_for('predict') }}" class="flex items-center space-x-3 text-gray-300 hover:text-success transition-colors">
+                            <div class="text-lg">🧬</div>
+                            <span>Try Detection</span>
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('register') }}" class="flex items-center space-x-3 text-gray-300 hover:text-success transition-colors">
+                            <div class="text-lg">🚀</div>
+                            <span>Get Started</span>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

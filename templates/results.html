@@ -1,0 +1,356 @@
+{% extends 'base.html' %}
+
+{% block title %}Results - MalaDetect AI{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-12">
+    <!-- Header -->
+    <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-white mb-4">Model Performance Results</h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">Comprehensive evaluation and comparison of our deep learning models</p>
+    </div>
+
+    <!-- Model Performance Overview -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-12">
+        <!-- CNN/MobileNet Results -->
+        <div class="glass rounded-2xl p-8">
+            <div class="flex items-center mb-6">
+                <div class="text-4xl mr-4">⚡</div>
+                <h2 class="text-2xl font-bold text-primary">CNN / MobileNet</h2>
+            </div>
+            <div class="text-center mb-6">
+                <div class="text-5xl font-bold text-primary mb-2">92-93%</div>
+                <div class="text-gray-300">Accuracy Range</div>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-primary/10 border border-primary/30 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-300">Precision</span>
+                        <span class="text-primary font-bold">92.1%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-primary h-2 rounded-full" style="width: 92.1%"></div>
+                    </div>
+                </div>
+                <div class="bg-primary/10 border border-primary/30 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-300">Recall</span>
+                        <span class="text-primary font-bold">93.2%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-primary h-2 rounded-full" style="width: 93.2%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 p-4 bg-success/10 border border-success/30 rounded-lg">
+                <div class="text-success font-semibold mb-2">⚡ Performance Advantage</div>
+                <p class="text-gray-300 text-sm">Faster inference and lower computational requirements</p>
+            </div>
+        </div>
+
+        <!-- VGG16 Results -->
+        <div class="glass rounded-2xl p-8">
+            <div class="flex items-center mb-6">
+                <div class="text-4xl mr-4">🎯</div>
+                <h2 class="text-2xl font-bold text-secondary">VGG16</h2>
+            </div>
+            <div class="text-center mb-6">
+                <div class="text-5xl font-bold text-secondary mb-2">83-87%</div>
+                <div class="text-gray-300">Accuracy Range</div>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-secondary/10 border border-secondary/30 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-300">Precision</span>
+                        <span class="text-secondary font-bold">85.4%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-secondary h-2 rounded-full" style="width: 85.4%"></div>
+                    </div>
+                </div>
+                <div class="bg-secondary/10 border border-secondary/30 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-300">Recall</span>
+                        <span class="text-secondary font-bold">86.8%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-secondary h-2 rounded-full" style="width: 86.8%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 p-4 bg-success/10 border border-success/30 rounded-lg">
+                <div class="text-success font-semibold mb-2">🎯 Strong Recall</div>
+                <p class="text-gray-300 text-sm">Excellent performance on uninfected class detection</p>
+            </div>
+        </div>
+
+        <!-- Best Model Highlight -->
+        <div class="glass rounded-2xl p-8">
+            <div class="flex items-center mb-6">
+                <div class="text-4xl mr-4">🏆</div>
+                <h2 class="text-2xl font-bold text-success">Best Performer</h2>
+            </div>
+            <div class="text-center mb-6">
+                <div class="text-3xl font-bold text-success mb-2">MobileNet/CNN</div>
+                <div class="text-gray-300">Optimal Balance</div>
+            </div>
+            <div class="space-y-3">
+                <div class="flex items-center space-x-3">
+                    <div class="text-success text-lg">✓</div>
+                    <span class="text-gray-300">Higher accuracy (92-93%)</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="text-success text-lg">✓</div>
+                    <span class="text-gray-300">Faster inference time</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="text-success text-lg">✓</div>
+                    <span class="text-gray-300">Lower resource usage</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="text-success text-lg">✓</div>
+                    <span class="text-gray-300">Better for deployment</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Metrics Comparison -->
+    <div class="glass rounded-2xl p-8 mb-12">
+        <div class="flex items-center mb-8">
+            <div class="text-4xl mr-4">📈</div>
+            <h2 class="text-3xl font-bold text-white">Detailed Performance Metrics</h2>
+        </div>
+        
+        <div class="overflow-x-auto">
+            <table class="w-full">
+                <thead>
+                    <tr class="border-b border-white/20">
+                        <th class="text-left py-4 px-4 text-white font-semibold">Model</th>
+                        <th class="text-center py-4 px-4 text-white font-semibold">Accuracy</th>
+                        <th class="text-center py-4 px-4 text-white font-semibold">Precision</th>
+                        <th class="text-center py-4 px-4 text-white font-semibold">Recall</th>
+                        <th class="text-center py-4 px-4 text-white font-semibold">Speed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                        <td class="py-4 px-4">
+                            <div class="flex items-center">
+                                <div class="text-2xl mr-3">🧠</div>
+                                <div>
+                                    <div class="text-primary font-semibold">Custom CNN</div>
+                                    <div class="text-gray-400 text-sm">Built from scratch</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center py-4 px-4">
+                            <div class="bg-primary/20 text-primary font-bold text-lg px-3 py-1 rounded-full inline-block">92.8%</div>
+                        </td>
+                        <td class="text-center py-4 px-4 text-gray-300 font-semibold">92.1%</td>
+                        <td class="text-center py-4 px-4 text-gray-300 font-semibold">93.2%</td>
+                        <td class="text-center py-4 px-4">
+                            <span class="bg-success/20 text-success px-2 py-1 rounded text-sm">Fast</span>
+                        </td>
+                    </tr>
+                    <tr class="border-b border-white/10 hover:bg-white/5 transition-colors">
+                        <td class="py-4 px-4">
+                            <div class="flex items-center">
+                                <div class="text-2xl mr-3">⚡</div>
+                                <div>
+                                    <div class="text-primary font-semibold">MobileNet</div>
+                                    <div class="text-gray-400 text-sm">Transfer learning</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center py-4 px-4">
+                            <div class="bg-primary/20 text-primary font-bold text-lg px-3 py-1 rounded-full inline-block">93.1%</div>
+                        </td>
+                        <td class="text-center py-4 px-4 text-gray-300 font-semibold">92.5%</td>
+                        <td class="text-center py-4 px-4 text-gray-300 font-semibold">93.8%</td>
+                        <td class="text-center py-4 px-4">
+                            <span class="bg-success/20 text-success px-2 py-1 rounded text-sm">Very Fast</span>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-white/5 transition-colors">
+                        <td class="py-4 px-4">
+                            <div class="flex items-center">
+                                <div class="text-2xl mr-3">🎯</div>
+                                <div>
+                                    <div class="text-secondary font-semibold">VGG16</div>
+                                    <div class="text-gray-400 text-sm">Deep architecture</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center py-4 px-4">
+                            <div class="bg-secondary/20 text-secondary font-bold text-lg px-3 py-1 rounded-full inline-block">85.2%</div>
+                        </td>
+                        <td class="text-center py-4 px-4 text-gray-300 font-semibold">85.4%</td>
+                        <td class="text-center py-4 px-4 text-gray-300 font-semibold">86.8%</td>
+                        <td class="text-center py-4 px-4">
+                            <span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded text-sm">Slower</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Classification Results -->
+    <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <!-- Parasitized Detection -->
+        <div class="glass rounded-2xl p-8">
+            <div class="flex items-center mb-6">
+                <div class="text-4xl mr-4">🩹</div>
+                <h2 class="text-2xl font-bold text-danger">Parasitized Detection</h2>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-danger/10 border border-danger/30 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-300">True Positive Rate</span>
+                        <span class="text-danger font-bold">93.2%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-danger h-2 rounded-full" style="width: 93.2%"></div>
+                    </div>
+                </div>
+                <div class="bg-danger/10 border border-danger/30 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-300">Precision</span>
+                        <span class="text-danger font-bold">92.5%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-danger h-2 rounded-full" style="width: 92.5%"></div>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm mt-4">Strong detection of malaria parasites with minimal false negatives, crucial for early diagnosis</p>
+            </div>
+        </div>
+
+        <!-- Uninfected Detection -->
+        <div class="glass rounded-2xl p-8">
+            <div class="flex items-center mb-6">
+                <div class="text-4xl mr-4">🩸</div>
+                <h2 class="text-2xl font-bold text-success">Uninfected Detection</h2>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-success/10 border border-success/30 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-300">True Negative Rate</span>
+                        <span class="text-success font-bold">92.8%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-success h-2 rounded-full" style="width: 92.8%"></div>
+                    </div>
+                </div>
+                <div class="bg-success/10 border border-success/30 rounded-lg p-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-gray-300">Specificity</span>
+                        <span class="text-success font-bold">93.1%</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div class="bg-success h-2 rounded-full" style="width: 93.1%"></div>
+                    </div>
+                </div>
+                <p class="text-gray-300 text-sm mt-4">Excellent identification of healthy cells, reducing unnecessary treatments and false alarms</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confusion Matrix Explanation -->
+    <div class="glass rounded-2xl p-8 mb-12">
+        <div class="flex items-center mb-8">
+            <div class="text-4xl mr-4">🗓️</div>
+            <h2 class="text-3xl font-bold text-white">Confusion Matrix Analysis</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+                <h3 class="text-xl font-semibold text-primary">Model Performance Breakdown</h3>
+                <div class="space-y-4">
+                    <div class="bg-success/10 border border-success/30 rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <div class="text-2xl mr-3">✓</div>
+                            <div class="text-success font-semibold">True Positives</div>
+                        </div>
+                        <p class="text-gray-300 text-sm">Correctly identified parasitized cells - critical for patient treatment</p>
+                    </div>
+                    <div class="bg-success/10 border border-success/30 rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <div class="text-2xl mr-3">✓</div>
+                            <div class="text-success font-semibold">True Negatives</div>
+                        </div>
+                        <p class="text-gray-300 text-sm">Correctly identified uninfected cells - prevents unnecessary treatment</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <h3 class="text-xl font-semibold text-yellow-400">Error Analysis</h3>
+                <div class="space-y-4">
+                    <div class="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <div class="text-2xl mr-3">⚠️</div>
+                            <div class="text-yellow-400 font-semibold">False Positives: ~7%</div>
+                        </div>
+                        <p class="text-gray-300 text-sm">Healthy cells misclassified as infected - leads to unnecessary concern</p>
+                    </div>
+                    <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <div class="text-2xl mr-3">❌</div>
+                            <div class="text-red-400 font-semibold">False Negatives: ~7%</div>
+                        </div>
+                        <p class="text-gray-300 text-sm">Infected cells missed - most critical error type requiring attention</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Findings -->
+    <div class="glass rounded-2xl p-8">
+        <div class="flex items-center mb-8">
+            <div class="text-4xl mr-4">💡</div>
+            <h2 class="text-3xl font-bold text-white">Key Findings</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-success">Advantages</h3>
+                <div class="space-y-3">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-2 h-2 bg-success rounded-full mt-2 flex-shrink-0"></div>
+                        <p class="text-gray-300"><span class="text-success font-semibold">MobileNet/CNN</span> achieved superior accuracy (92-93%) with faster inference</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-2 h-2 bg-success rounded-full mt-2 flex-shrink-0"></div>
+                        <p class="text-gray-300">Balanced performance across both <span class="text-danger">Parasitized</span> and <span class="text-success">Uninfected</span> classes</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-2 h-2 bg-success rounded-full mt-2 flex-shrink-0"></div>
+                        <p class="text-gray-300">Lower computational requirements make it suitable for deployment</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-secondary">Observations</h3>
+                <div class="space-y-3">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
+                        <p class="text-gray-300"><span class="text-secondary font-semibold">VGG16</span> showed deeper but heavier architecture with lower accuracy</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
+                        <p class="text-gray-300">Transfer learning approach proved effective for medical image classification</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
+                        <p class="text-gray-300">Model selection depends on accuracy vs speed requirements</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MalaDetect — AI Malaria Diagnosis{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#0891b2',
+                        'secondary': '#8b5cf6',
+                        'success': '#10b981',
+                        'danger': '#ef4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .light {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+        }
+        .dark {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .light .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .light .glass-dark {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        .light .text-white { color: #1f2937 !important; }
+        .light .text-gray-300 { color: #4b5563 !important; }
+        .light .text-gray-400 { color: #6b7280 !important; }
+        .light h1, .light h2, .light h3, .light p, .light span, .light label { color: #1f2937 !important; }
+        .light .text-xl { color: #374151 !important; }
+        .light .text-2xl { color: #1f2937 !important; }
+        .light .text-3xl { color: #1f2937 !important; }
+        .light .text-4xl { color: #1f2937 !important; }
+        .light input, .light select, .light textarea { 
+            background: rgba(255, 255, 255, 0.9) !important; 
+            color: #1f2937 !important; 
+            border: 1px solid #d1d5db !important; 
+        }
+        .light input::placeholder, .light textarea::placeholder { 
+            color: #6b7280 !important; 
+        }
+    </style>
+</head>
+<body class="dark text-white transition-colors duration-300" id="body">
+    <!-- Navigation -->
+    <nav class="glass-dark fixed top-0 w-full z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="{{ url_for('home') }}" class="text-2xl font-bold text-primary hover:text-cyan-300 transition-colors">
+                🧬 MalaDetect AI
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="{{ url_for('home') }}" class="hover:text-primary transition-colors">Home</a>
+                <a href="{{ url_for('about') }}" class="hover:text-primary transition-colors">About</a>
+                <a href="{{ url_for('methodology') }}" class="hover:text-primary transition-colors">Methodology</a>
+                <a href="{{ url_for('results') }}" class="hover:text-primary transition-colors">Results</a>
+                {% if session.get('user_id') %}
+                    <a href="{{ url_for('predict') }}" class="hover:text-primary transition-colors">Predict</a>
+                {% endif %}
+                <a href="{{ url_for('contact') }}" class="hover:text-primary transition-colors">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-lg glass hover:bg-white/20 transition-colors">
+                    <span id="theme-icon" class="text-xl">🌙</span>
+                </button>
+                {% if session.get('user_id') %}
+                    <span class="text-sm text-gray-300 dark:text-gray-300">Hi, {{ session.get('user_name') }}</span>
+                    <a href="{{ url_for('logout') }}" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="hover:text-primary transition-colors">Login</a>
+                    <a href="{{ url_for('register') }}" class="bg-primary hover:bg-cyan-600 px-4 py-2 rounded-lg transition-colors">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="fixed top-20 right-4 z-40 space-y-2">
+                {% for category, message in messages %}
+                    <div class="glass rounded-lg p-4 max-w-sm {% if category == 'success' %}border-green-500{% elif category == 'danger' %}border-red-500{% elif category == 'warning' %}border-yellow-500{% else %}border-blue-500{% endif %}">
+                        <div class="flex items-center">
+                            {% if category == 'success' %}
+                                <span class="text-green-400 mr-2">✓</span>
+                            {% elif category == 'danger' %}
+                                <span class="text-red-400 mr-2">✗</span>
+                            {% elif category == 'warning' %}
+                                <span class="text-yellow-400 mr-2">⚠</span>
+                            {% else %}
+                                <span class="text-blue-400 mr-2">ℹ</span>
+                            {% endif %}
+                            <span class="text-sm">{{ message }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main class="pt-20 min-h-screen">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-dark mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-gray-300 dark:text-gray-300">&copy; 2025 MalaDetect AI. Built with Flask, TensorFlow & Tailwind CSS</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.getElementById('body');
+        
+        // Check for saved theme preference or default to dark
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        // Apply saved theme
+        if (currentTheme === 'light') {
+            body.classList.remove('dark');
+            body.classList.add('light', 'text-gray-900');
+            body.classList.remove('text-white');
+            themeIcon.textContent = '☀️';
+        }
+        
+        // Theme toggle event listener
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark')) {
+                // Switch to light mode
+                body.classList.remove('dark', 'text-white');
+                body.classList.add('light', 'text-gray-900');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'light');
+            } else {
+                // Switch to dark mode
+                body.classList.remove('light', 'text-gray-900');
+                body.classList.add('dark', 'text-white');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>

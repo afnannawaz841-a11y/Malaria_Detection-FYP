@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="260" viewBox="0 0 600 260">
+  <rect width="100%" height="100%" fill="#ffffff" rx="12"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#334155">
+    <text x="30" y="40" font-weight="700">Model Architecture (MobileNet)</text>
+    <rect x="30" y="60" width="120" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1"/><text x="45" y="86">Input</text>
+    <rect x="170" y="60" width="120" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1"/><text x="200" y="86">MobileNet Backbone</text>
+    <rect x="320" y="60" width="120" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1"/><text x="350" y="86">Global Pooling</text>
+    <rect x="470" y="60" width="100" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1"/><text x="490" y="86">Dense → Softmax</text>
+    <path d="M150 80 L170 80" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M290 80 L320 80" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M440 80 L470 80" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L9,3 z" fill="#64748b" />
+      </marker>
+    </defs>
+  </g>
+</svg>

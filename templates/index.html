@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - MalaDetect AI{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="px-6 py-16">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-semibold">
+                    🧬 AI-Powered Diagnosis
+                </div>
+                <h1 class="text-5xl lg:text-6xl font-bold text-white leading-tight">
+                    Malaria Detection
+                    <span class="text-primary">System</span>
+                </h1>
+                <p class="text-xl text-gray-300 leading-relaxed">
+                    Detect malaria quickly and accurately using advanced AI. Upload blood smear images and get instant predictions with confidence scores.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    {% if session.get('user_id') %}
+                        <a href="{{ url_for('predict') }}" class="bg-gradient-to-r from-primary to-cyan-600 hover:from-cyan-600 hover:to-primary text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 text-center">
+                            Start Detection →
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('register') }}" class="bg-gradient-to-r from-primary to-cyan-600 hover:from-cyan-600 hover:to-primary text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 text-center">
+                            Get Started →
+                        </a>
+                    {% endif %}
+                    <a href="{{ url_for('results') }}" class="glass hover:bg-white/20 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 text-center">
+                        View Results
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="glass rounded-2xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                    <div class="text-6xl text-center mb-4">🧬</div>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-success rounded-full animate-pulse"></div>
+                            <span class="text-gray-200">AI Model Ready</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+                            <span class="text-gray-200">93.8% Accuracy</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-3 h-3 bg-secondary rounded-full animate-pulse"></div>
+                            <span class="text-gray-200">Instant Results</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Grid -->
+<section class="px-6 py-16">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-8">
+            <a href="{{ url_for('predict') if session.get('user_id') else url_for('login') }}" class="group">
+                <div class="glass rounded-2xl p-8 h-full hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🧬</div>
+                    <h3 class="text-2xl font-bold text-white mb-4">AI Detection</h3>
+                    <p class="text-gray-300">Upload blood smear images and get instant AI-powered malaria detection with confidence scores.</p>
+                </div>
+            </a>
+            
+            <a href="{{ url_for('results') }}" class="group">
+                <div class="glass rounded-2xl p-8 h-full hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">📈</div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Analytics</h3>
+                    <p class="text-gray-300">View detection results, accuracy metrics, and model performance comparisons.</p>
+                </div>
+            </a>
+            
+            <a href="{{ url_for('about') }}" class="group">
+                <div class="glass rounded-2xl p-8 h-full hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">📚</div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Learn More</h3>
+                    <p class="text-gray-300">Discover how our MobileNet and VGG16 models detect malaria parasites in blood cells.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+<!-- Demo Results -->
+<section class="px-6 py-16">
+    <div class="max-w-7xl mx-auto">
+  
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-white mb-4">Detection Examples</h2>
+        <p class="text-xl text-gray-300">
+          See how our AI identifies malaria parasites in blood cell images
+        </p>
+      </div>
+  
+      <!-- GRID -->
+      <div class="grid md:grid-cols-3 gap-8">
+  
+        <!-- Uninfected Example -->
+        <div class="glass rounded-2xl p-6">
+          <div class="aspect-square bg-gray-800 rounded-lg mb-4 overflow-hidden">
+            <img
+              src="/static/images/Uninfected.png"
+              alt="Uninfected Sample"
+              class="w-full h-full object-cover rounded-lg"
+            />
+          </div>
+  
+          <div class="flex items-center justify-between mb-3">
+            <span class="bg-success text-white px-3 py-1 rounded-full text-sm font-semibold">
+              ✓ Uninfected
+            </span>
+            <span class="text-gray-300 text-sm">93.8% confidence</span>
+          </div>
+  
+          <div class="w-full bg-gray-700 rounded-full h-2">
+            <div class="bg-success h-2 rounded-full" style="width: 99%"></div>
+          </div>
+        </div>
+  
+        <!-- Parasitized Example -->
+        <div class="glass rounded-2xl p-6">
+          <div class="aspect-square bg-gray-800 rounded-lg mb-4 overflow-hidden">
+            <img
+              src="/static/images/paratarized.png"
+              alt="Parasitized Sample"
+              class="w-full h-full object-cover rounded-lg"
+            />
+          </div>
+  
+          <div class="flex items-center justify-between mb-3">
+            <span class="bg-danger text-white px-3 py-1 rounded-full text-sm font-semibold">
+              ⚠ Parasitized
+            </span>
+            <span class="text-gray-300 text-sm">97.8% confidence</span>
+          </div>
+  
+          <div class="w-full bg-gray-700 rounded-full h-2">
+            <div class="bg-danger h-2 rounded-full" style="width: 98%"></div>
+          </div>
+        </div>
+  
+        <!-- Processing Example -->
+        <div class="glass rounded-2xl p-6">
+          <div class="aspect-square bg-gray-800 rounded-lg mb-4 flex items-center justify-center">
+            <div class="animate-spin text-4xl">⚙️</div>
+          </div>
+  
+          <div class="flex items-center justify-between mb-3">
+            <span class="bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
+              Processing...
+            </span>
+            <span class="text-gray-300 text-sm">AI analyzing</span>
+          </div>
+  
+          <div class="w-full bg-gray-700 rounded-full h-2">
+            <div class="bg-primary h-2 rounded-full animate-pulse" style="width: 60%"></div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+        <div class="text-center mt-12">
+            {% if session.get('user_id') %}
+                <a href="{{ url_for('predict') }}" class="bg-gradient-to-r from-secondary to-purple-600 hover:from-purple-600 hover:to-secondary text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
+                    Try Detection Now →
+                </a>
+            {% else %}
+                <a href="{{ url_for('register') }}" class="bg-gradient-to-r from-secondary to-purple-600 hover:from-purple-600 hover:to-secondary text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105">
+                    Create Account to Start →
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

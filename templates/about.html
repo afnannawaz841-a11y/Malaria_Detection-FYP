@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block title %}About - MalaDetect AI{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-12">
+    <!-- Header -->
+    <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-white mb-4">Malaria Disease Detection using Deep Learning</h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">AI-powered system for detecting malaria-infected vs uninfected blood cell images using computer vision</p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-12">
+        <!-- Project Overview -->
+        <div class="lg:col-span-2">
+            <div class="glass rounded-2xl p-8 h-full">
+                <div class="flex items-center mb-6">
+                    <div class="text-4xl mr-4">🩸</div>
+                    <h2 class="text-3xl font-bold text-white">Project Overview</h2>
+                </div>
+                
+                <div class="space-y-6 text-gray-300 leading-relaxed">
+                    <p>This project focuses on developing an automated malaria detection system that can classify blood cell images as either <span class="text-danger font-semibold">Parasitized</span> (infected with malaria parasites) or <span class="text-success font-semibold">Uninfected</span> (healthy cells).</p>
+                    
+                    <p>Using deep learning and computer vision techniques, our system analyzes microscopic blood smear images to assist healthcare professionals in early malaria diagnosis, potentially reducing diagnostic time and improving accuracy in resource-limited settings.</p>
+                    
+                    <div class="bg-primary/10 border border-primary/30 rounded-lg p-6 mt-6">
+                        <h3 class="text-xl font-semibold text-primary mb-3">🎯 Purpose & Impact</h3>
+                        <p>Early and accurate malaria diagnosis is crucial for effective treatment. Our AI system aims to assist medical professionals by providing rapid, consistent analysis of blood cell images, supporting clinical decision-making and improving patient outcomes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Stack -->
+        <div>
+            <div class="glass rounded-2xl p-8 h-full">
+                <div class="flex items-center mb-6">
+                    <div class="text-4xl mr-4">⚙️</div>
+                    <h2 class="text-2xl font-bold text-white">Tech Stack</h2>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="bg-white/5 rounded-lg p-4">
+                        <div class="text-primary font-semibold mb-2">🧠 Deep Learning</div>
+                        <div class="text-gray-300 text-sm">Custom CNN, MobileNet, VGG16</div>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-4">
+                        <div class="text-secondary font-semibold mb-2">🖥️ Backend</div>
+                        <div class="text-gray-300 text-sm">Flask, Python, TensorFlow</div>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-4">
+                        <div class="text-success font-semibold mb-2">🎨 Frontend</div>
+                        <div class="text-gray-300 text-sm">React, Tailwind CSS</div>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-4">
+                        <div class="text-primary font-semibold mb-2">📊 Dataset</div>
+                        <div class="text-gray-300 text-sm">Parasitized & Uninfected cell images</div>
+                    </div>
+                </div>
+                
+                <a href="{{ url_for('predict') if session.get('user_id') else url_for('login') }}" class="bg-gradient-to-r from-success to-green-600 hover:from-green-600 hover:to-success text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 mt-8 inline-block w-full text-center">
+                    Try Detection →
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Models Section -->
+    <div class="glass rounded-2xl p-8">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-white mb-4">Deep Learning Models</h2>
+            <p class="text-gray-300">Three powerful architectures for malaria detection with different performance characteristics</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Custom CNN -->
+            <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                <div class="flex items-center mb-4">
+                    <div class="text-3xl mr-3">🧠</div>
+                    <h3 class="text-2xl font-bold text-primary">Custom CNN</h3>
+                </div>
+                <p class="text-gray-300 mb-4">Built-from-scratch convolutional neural network designed specifically for malaria cell classification with optimized layers.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">Custom</span>
+                    <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">Optimized</span>
+                </div>
+            </div>
+
+            <!-- MobileNet -->
+            <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                <div class="flex items-center mb-4">
+                    <div class="text-3xl mr-3">⚡</div>
+                    <h3 class="text-2xl font-bold text-secondary">MobileNet</h3>
+                </div>
+                <p class="text-gray-300 mb-4">Transfer learning approach using pre-trained MobileNet with frozen base layers for efficient and fast inference.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-secondary/20 text-secondary px-3 py-1 rounded-full text-sm">Transfer Learning</span>
+                    <span class="bg-secondary/20 text-secondary px-3 py-1 rounded-full text-sm">Fast</span>
+                </div>
+            </div>
+
+            <!-- VGG16 -->
+            <div class="bg-white/5 rounded-xl p-6 border border-white/10">
+                <div class="flex items-center mb-4">
+                    <div class="text-3xl mr-3">🎯</div>
+                    <h3 class="text-2xl font-bold text-success">VGG16</h3>
+                </div>
+                <p class="text-gray-300 mb-4">Deep convolutional architecture with transfer learning, using frozen base layers for robust feature extraction.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-success/20 text-success px-3 py-1 rounded-full text-sm">Deep Learning</span>
+                    <span class="bg-success/20 text-success px-3 py-1 rounded-full text-sm">Robust</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

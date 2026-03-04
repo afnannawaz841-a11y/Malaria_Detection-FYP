@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+
+{% block title %}Methodology - MalaDetect AI{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-12">
+    <!-- Header -->
+    <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-white mb-4">Methodology</h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">Systematic approach to building our malaria detection system using deep learning</p>
+    </div>
+
+    <!-- Process Steps -->
+    <div class="grid lg:grid-cols-2 gap-12 mb-16">
+        <!-- Left Column - Steps -->
+        <div class="space-y-8">
+            <!-- Step 1: Dataset Collection -->
+            <div class="glass rounded-2xl p-8">
+                <div class="flex items-center mb-6">
+                    <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4">1</div>
+                    <h2 class="text-2xl font-bold text-white">Dataset Collection</h2>
+                </div>
+                <p class="text-gray-300 mb-4">Blood smear images collected from microscopic examination of blood samples, containing two distinct classes for binary classification.</p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-danger/10 border border-danger/30 rounded-lg p-4 text-center">
+                        <div class="text-2xl mb-2">🩹</div>
+                        <div class="text-danger font-semibold">Parasitized</div>
+                        <div class="text-gray-300 text-sm">Infected cells</div>
+                    </div>
+                    <div class="bg-success/10 border border-success/30 rounded-lg p-4 text-center">
+                        <div class="text-2xl mb-2">🩸</div>
+                        <div class="text-success font-semibold">Uninfected</div>
+                        <div class="text-gray-300 text-sm">Healthy cells</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Image Preprocessing -->
+            <div class="glass rounded-2xl p-8">
+                <div class="flex items-center mb-6">
+                    <div class="bg-secondary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4">2</div>
+                    <h2 class="text-2xl font-bold text-white">Image Preprocessing</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
+                        <p class="text-gray-300"><span class="text-secondary font-semibold">Resizing:</span> Images resized to 150×150 or 224×224 pixels depending on model requirements</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
+                        <p class="text-gray-300"><span class="text-secondary font-semibold">Normalization:</span> Pixel values normalized to [0,1] range for optimal training</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <div class="w-2 h-2 bg-secondary rounded-full mt-2 flex-shrink-0"></div>
+                        <p class="text-gray-300"><span class="text-secondary font-semibold">Data Augmentation:</span> Random rotation, horizontal flip, and zoom to increase dataset diversity</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Model Architecture -->
+            <div class="glass rounded-2xl p-8">
+                <div class="flex items-center mb-6">
+                    <div class="bg-success text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4">3</div>
+                    <h2 class="text-2xl font-bold text-white">Model Architecture</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-white/5 rounded-lg p-4">
+                        <div class="text-success font-semibold mb-2">🧠 Custom CNN</div>
+                        <p class="text-gray-300 text-sm">Conv2D layers with MaxPooling, BatchNormalization, and Dropout for regularization</p>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-4">
+                        <div class="text-success font-semibold mb-2">⚡ MobileNet & VGG16</div>
+                        <p class="text-gray-300 text-sm">Transfer learning with frozen base layers and custom classification heads</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Training Process -->
+            <div class="glass rounded-2xl p-8">
+                <div class="flex items-center mb-6">
+                    <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4">4</div>
+                    <h2 class="text-2xl font-bold text-white">Training Process</h2>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <div class="text-primary text-lg">🎯</div>
+                        <span class="text-gray-300"><span class="text-primary font-semibold">Loss Function:</span> Categorical Crossentropy</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-primary text-lg">⚙️</div>
+                        <span class="text-gray-300"><span class="text-primary font-semibold">Optimizer:</span> Adam with adaptive learning rate</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-primary text-lg">🛑</div>
+                        <span class="text-gray-300"><span class="text-primary font-semibold">Callbacks:</span> EarlyStopping & ModelCheckpoint</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Prediction Pipeline -->
+            <div class="glass rounded-2xl p-8">
+                <div class="flex items-center mb-6">
+                    <div class="bg-secondary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4">5</div>
+                    <h2 class="text-2xl font-bold text-white">Prediction Pipeline</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-secondary/10 border border-secondary/30 rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <div class="text-2xl mr-3">📷</div>
+                            <div class="text-secondary font-semibold">Image Upload</div>
+                        </div>
+                        <p class="text-gray-300 text-sm">User uploads blood cell image through web interface</p>
+                    </div>
+                    <div class="text-secondary text-2xl text-center">↓</div>
+                    <div class="bg-secondary/10 border border-secondary/30 rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <div class="text-2xl mr-3">🧬</div>
+                            <div class="text-secondary font-semibold">AI Prediction</div>
+                        </div>
+                        <p class="text-gray-300 text-sm">Model classifies as <span class="text-danger">Infected</span> or <span class="text-success">Uninfected</span> with confidence score</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column - Visual Pipeline -->
+        <div class="space-y-8">
+            <!-- Data Flow Diagram -->
+            <div class="glass rounded-2xl p-8 text-center">
+                <h3 class="text-2xl font-bold text-white mb-6">Data Processing Pipeline</h3>
+                <div class="space-y-6">
+                    <div class="bg-primary/20 rounded-lg p-4">
+                        <div class="text-4xl mb-2">📷</div>
+                        <div class="text-white font-semibold">Blood Smear Images</div>
+                        <div class="text-gray-300 text-sm">Microscopic cell images</div>
+                    </div>
+                    <div class="text-primary text-2xl">↓</div>
+                    <div class="bg-secondary/20 rounded-lg p-4">
+                        <div class="text-4xl mb-2">⚙️</div>
+                        <div class="text-white font-semibold">Preprocessing</div>
+                        <div class="text-gray-300 text-sm">Resize, normalize, augment</div>
+                    </div>
+                    <div class="text-secondary text-2xl">↓</div>
+                    <div class="bg-success/20 rounded-lg p-4">
+                        <div class="text-4xl mb-2">🧬</div>
+                        <div class="text-white font-semibold">Model Training</div>
+                        <div class="text-gray-300 text-sm">CNN, MobileNet, VGG16</div>
+                    </div>
+                    <div class="text-success text-2xl">↓</div>
+                    <div class="bg-primary/20 rounded-lg p-4">
+                        <div class="text-4xl mb-2">📈</div>
+                        <div class="text-white font-semibold">Classification</div>
+                        <div class="text-gray-300 text-sm">Infected vs Uninfected</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Comparison -->
+            <div class="glass rounded-2xl p-8">
+                <h3 class="text-2xl font-bold text-white mb-6 text-center">Model Architectures</h3>
+                <div class="space-y-4">
+                    <div class="bg-primary/10 border border-primary/30 rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <div class="text-2xl mr-3">🧠</div>
+                            <div class="text-primary font-semibold">Custom CNN</div>
+                        </div>
+                        <div class="text-gray-300 text-sm">Conv2D → MaxPool → BatchNorm → Dense</div>
+                    </div>
+                    <div class="bg-secondary/10 border border-secondary/30 rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <div class="text-2xl mr-3">⚡</div>
+                            <div class="text-secondary font-semibold">MobileNet</div>
+                        </div>
+                        <div class="text-gray-300 text-sm">Frozen base + Custom classifier</div>
+                    </div>
+                    <div class="bg-success/10 border border-success/30 rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <div class="text-2xl mr-3">🎯</div>
+                            <div class="text-success font-semibold">VGG16</div>
+                        </div>
+                        <div class="text-gray-300 text-sm">Frozen base + Custom classifier</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Specs -->
+            <div class="glass rounded-2xl p-8">
+                <h3 class="text-2xl font-bold text-white mb-6 text-center">Technical Specifications</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white/5 rounded-lg p-3 text-center">
+                        <div class="text-primary font-bold text-lg">150×150</div>
+                        <div class="text-gray-400 text-sm">Input Size (CNN)</div>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-3 text-center">
+                        <div class="text-secondary font-bold text-lg">224×224</div>
+                        <div class="text-gray-400 text-sm">Input Size (Transfer)</div>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-3 text-center">
+                        <div class="text-success font-bold text-lg">Binary</div>
+                        <div class="text-gray-400 text-sm">Classification</div>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-3 text-center">
+                        <div class="text-primary font-bold text-lg">Adam</div>
+                        <div class="text-gray-400 text-sm">Optimizer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

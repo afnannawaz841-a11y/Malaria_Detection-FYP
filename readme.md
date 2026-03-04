@@ -34,8 +34,7 @@ Frontend (HTML/CSS/JS) → Flask Backend → TensorFlow Models → Prediction Re
 
 | Model         | Accuracy | Speed      | Use Case                |
 |---------------|----------|-----------|------------------------|
-| **MobileNet** | 93.1%    | Very Fast | Production deployment  |
-| **Custom CNN**| 92.8%    | Fast      | Lightweight inference  |
+| **MobileNet/Custom CNN**| 92.8%    | Fast      | Lightweight inference  |
 | **VGG16**     | 85.2%    | Slower    | Research comparison    |
 
 ---
